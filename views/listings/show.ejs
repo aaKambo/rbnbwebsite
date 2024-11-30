@@ -1,0 +1,144 @@
+
+<div class="row mt-3">
+    <div class="col-8 offset-3">
+        <h2>
+            <%= listing.title %>
+        </h2>
+    </div>
+    <div class="card  col-6 offset-3  show-card  listing-card">
+              <!-- `listing.image.url` get's the image for the cloud storage process with teh file name and url -->
+        <img src="<%= listing.image.url %>" class="card-img-top  show-image" alt="listing_image">
+        <div class="card-body show-card ">
+            <p class="card-text">Owned by<i>
+                    <%= listing.owner.username %>
+                </i></p>
+            <p class="card-text">
+                <%= listing.description%>
+                    <p>
+                    <p class="card-text"> &#8377;<%= listing.price.toLocaleString("en-PK") %>
+                    </p>
+                    <p class="card-text">
+                        <%= listing.location %>
+                    </p>
+                    <p class="card-text">
+                        <%= listing.country %>
+                    </p>
+            </p>
+        </div>
+    </div>
+    <% if(currUser && listing.owner._id.equals(currUser._id)) { %>
+        <div class="btns mb-5 mt-3">
+            <a href="/listings/<%= listing._id %>/edit" class="btn btn-dark col-1 offset-3  edit-btn">Edit</a>
+
+            <form method="post" action="/listings/<%=listing._id%>?_method=DELETE">
+                <button class="btn btn-dark offset-4  delete-btn">Delete</button>
+            </form>
+        </div>
+        <% } %>
+</div>
+<div class="col-8 offset-3">
+    <% if(currUser){ %>
+        <hr>
+        <h4>Leave a comment </h4>
+        <form action="/listings/<%= listing.id %>/reviews" method="post" novalidate class="needs-validation">
+           
+            <!-- Container for Rating Field -->
+<div class="mb-3 mt-3">
+    <label for="rating" class="form-label">Rate us</label>
+    
+    <!-- Fieldset for grouping radio inputs representing each star rating -->
+    <fieldset class="starability-slot">
+        
+        <!-- No rating option (default selected) -->
+        <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked
+            aria-label="No rating." />
+
+        <!-- Radio button for 1 star rating -->
+        <input type="radio" id="first-rate1" name="review[rating]" value="1" />
+        <label for="first-rate1" title="Terrible">1 star</label>
+
+        <!-- Radio button for 2 stars rating -->
+        <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+        <label for="first-rate2" title="Not good">2 stars</label>
+
+        <!-- Radio button for 3 stars rating -->
+        <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+        <label for="first-rate3" title="Average">3 stars</label>
+
+        <!-- Radio button for 4 stars rating -->
+        <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+        <label for="first-rate4" title="Very good">4 stars</label>
+
+        <!-- Radio button for 5 stars rating -->
+        <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+        <label for="first-rate5" title="Amazing">5 stars</label>
+    </fieldset>
+</div>
+<!-- Container for Rating Field -->
+            <div class="mb-3 mt-3">
+                <label for="comment" class="form-label">Comment</label>
+                <textarea name="review[comment]" id="comment" col="20" rows="5" class="form-control"
+                    required></textarea>
+                <div class="invalid-feedback">
+                    please submit some comments for review
+                </div>
+            </div>
+            <button class=" btn  btn-dark">Submit</button>
+        </form>
+        <hr />
+        <% } %>
+<!-- applying condition if reviews exist then show all listings other wise not shown the `ALL REVEIWS` text -->
+            <% if(listing.reviews.length > 0) {%>
+            <div class="row">
+                <p>
+                    <h4>All Reviews</h4>
+                    </p>
+                <% for(review of listing.reviews) {%>
+                    <div class="card col-5 mb-3 ms-3">
+                        <div class="card-body">
+                            <h5 class="card-tilte">@<%= review.author.username %>
+                            </h5>
+                            <p class="card-text">
+                                <%= review.comment %>
+                            </p>
+                            <!-- for star review saves -->
+                            <p class="starability-result  card-text" data-rating="<%= review.rating %>">
+                                <!-- for star review saves -->
+                            
+                            </p>
+                            <form class="mb-3" method="POST"
+                                action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=Delete">
+                                <button class="btn btn-sm btn-dark">Delete</button>
+                            </form>
+                        </div>
+                    </div>
+                    <% } %>
+                    
+            </div>
+            <% } %>
+            </div>
+            <!-- below lines used for map setting -->
+            <!-- below lines used for map setting -->
+             <!-- i will work on it lator -->
+                <!-- <div class="col-6  mb-3">
+                    <h3>Where you'll be</h3>
+                     Map Container 
+                    <div id="map" style="width: 100vh; height: 300px;"></div>
+                </div>
+            </div>
+            <script>
+                // MapTiler API Key
+                const mapToken = "<%= process.env.MAP_TOKEN || 'ZDleXk7mUcfiPDVjCPfO'%>";
+                
+                // Initialize the map
+                const map = L.map('map').setView([31.5204, 74.3587], 10); // Set initial view with lat, lng, zoom
+                
+                // Add MapTiler Layer
+                const mtLayer = L.maptilerLayer({
+                    apiKey: mapToken, // API Key
+                    style: "https://api.maptiler.com/maps/basic-v2/style.json" // MapTiler style
+                }).addTo(map);
+                </script> -->
+      
+        
+          

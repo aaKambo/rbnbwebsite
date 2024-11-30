@@ -1,0 +1,77 @@
+<!-- style for nav barr search -->
+<style>
+.search-btn{
+background-color:#fe424d;
+color: white;
+width: 10rem;
+border-radius: 25px;
+padding: 0 1rem 0 1rem;
+}
+.search-btn:hover{
+  background-color: #fe424d;;
+  color: white;
+}
+.search-btn i{
+margin-right: 0.3rem;
+}
+.search-input{
+border-radius: 25px;
+padding: 0.5rem 0.5rem 0.5rem 3rem;
+font-size: 1rem;
+}
+</style>
+
+<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
+  <div class="container-fluid">
+    <!-- Brand Logo -->
+    <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"></i></a>
+
+    <!-- Navbar Toggler -->
+    <button 
+      class="navbar-toggler" 
+      type="button" 
+      data-bs-toggle="collapse" 
+      data-bs-target="#navbarNavAltMarkup" 
+      aria-controls="navbarNavAltMarkup" 
+      aria-expanded="false" 
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Collapsible Navbar Content -->
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <!-- Left-aligned Links -->
+      <div class="navbar-nav">
+        <!-- <a class="nav-link" href="/">Home</a> -->
+        <a class="nav-link" href="/listings">Explore</a>
+      </div>
+      <!-- navbar search bar -->
+    
+        <div class="navbar-nav ms-auto">
+          <form class="d-flex" role="search">
+            <input class="form-control me-2 search-input" type="search" placeholder="Search destination" >
+            <button class="btn search-btn " id="search-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i>
+              Search</button>
+          </form>
+        </div>
+      
+      <!-- navbar search bar -->
+      <!-- Right-aligned Links (conditionally rendered) -->
+      <div class="navbar-nav ms-auto">
+        <a class="nav-link" href="/listings/new">Arbnb New home</a>
+
+        <!-- If user doesn't exist, show Signup and Login -->
+        <% if (!currUser) { %>
+          <a class="nav-link" href="/signup"> <b>Sign up</b></a>
+          <a class="nav-link" href="/login"><b>Log in</b></a>
+        <% } %>
+
+        <!-- If user exists, show Logout -->
+        <% if (currUser) { %>
+          <a class="nav-link" href="/logout">Log out</a>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</nav>

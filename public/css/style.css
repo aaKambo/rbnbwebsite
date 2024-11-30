@@ -1,0 +1,175 @@
+body{
+    font-family: "plus jakarta Sans", sans-serif !important;
+    /* display: flex;
+    flex-direction: column;
+    min-height: 100vh; */
+   
+}
+
+/* fixed all the images in small size while edit an image */
+/* fixed all the images in small size while edit an image */
+
+.fixed-image-size {
+    width: 250px;
+    height: 180px;
+}
+
+/* .container{
+flex: 1;
+} */
+ /* nav bar means top bar  */
+.navbar{
+      height: 4rem;
+      background-color: white;
+}
+.fa-regular{
+color:#fe424d;
+font-size: 2rem;
+}
+.nav-link{
+color: #222222 !important;
+}
+/* footer */
+.f-info-links a{
+    text-decoration: none;
+    color: #222222;
+}
+.f-info-links a:hover{
+    text-decoration: underline;
+}
+.f-info-links,
+ .f-info-socials, .f-brand-info{
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.f-info-socials i{
+    font-size: 1.2rem;
+    margin-right: 1.2rem;
+}
+
+.f-info{
+    text-align: center;
+height: 8rem;
+background-color: #ebebeb;
+display:flex;
+flex-wrap: wrap;
+justify-content: center;
+align-items:space-evenly;
+}
+
+/* cards */
+.listing-card{
+border: none !important;
+margin-bottom: 2rem;
+}
+.card-img-top{
+border-radius: 1rem !important;
+width: 100% !important;
+object-fit: cover !important;
+}
+/* card body means card main image ka nicha jo text hai  */
+.card-body{ 
+    padding: 0;
+}
+/* .card-text p{
+font-weight: 400;
+} */
+.cards-text{
+text-decoration: none;
+}
+
+/* card-img-overlay */
+.card-img-overlay{
+opacity:  0;
+}
+.card-img-overlay:hover{
+opacity: 0.2;
+background-color: white;
+}
+/* new page */
+/* ADD  BUTTON style FOR new list SUBMIT BUTTON */
+.add-btn{
+background-color: #fe424d !important;
+border: none !important;
+} 
+/* edit page  */
+/* add button style for edit list submit button */
+.edit-button{
+    background-color: #fe424d !important;
+    border: none !important;
+}
+/* show page  */
+.show-image{
+    height: 30vh;
+}
+.btns{
+    display: flex;
+}
+.edit-btn{
+    background-color: #fe424d !important;
+    border: none !important;
+}
+
+/* card on show page  */
+/* Remove padding and margin from the card body */
+.show-card .card-body {
+    padding: 0;
+    margin: 0;
+}
+
+/* Align the image directly under the card body without gaps */
+.show-image {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+/* Ensure the card has no extra space around it and fits the container */
+.show-card {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+/* cards on index page  */
+/* Remove padding and margin from the card body for all cards */
+.index-card .card-body {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Ensure the card image is aligned perfectly below the card body */
+.index-image {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+}
+
+/* SET THE FOOTER BAR FOR TO THE BOTTOMON ERROR PAGE  */
+/* Ensure the body and HTML take full height */
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Footer styles */
+footer {
+    margin-top: auto; /* Pushes footer to the bottom */
+}
+
+/* i will work later on map styling */
+/* for map styling */
+/* #map {position: absolute; height: 100px; width: 300px; ;} */
+#map { height: 400px; width: 800px;}
+
+
+
+
+
+
+

@@ -1,0 +1,117 @@
+
+<div class="row">
+    <div class="col-8 offset-2" >
+        <br>
+        <h3> <b>Create a New Listing</b></h3>
+        <!-- enctype="multipart/form-data" for upload files and images -->
+<form method="post" action="/listings" novalidate class="needs-validation"  enctype="multipart/form-data">
+    <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" name="listing[title]" placeholder="Add a Catching Title" class="form-control" required>
+    <div class="valid-feedback">tilte looks good!</div>
+    </div>
+    <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea name="listing[description]" class="form-control" required></textarea>
+        <div class="invalid-feedback">please enter short description!</div>
+    </div>
+    <!-- this is for image or files upload -->
+    <div class="mb-3">
+        <label for="image" class="form-label"> Upload Listing Image </label> 
+        <input type="file" name="listing[image]" class="form-control" placeholder="Enter Image Link/URL" required >
+    </div>
+    <!-- this is for image or files upload -->
+    <div class="row">
+    <div class="mb-3 col-md-4">
+        <label for="price" class="form-label">Price</label>
+        <input type="number" name="listing[price]" placeholder="1200" class="form-control"  >
+        <div class="invalid-feedback">pleas enter valid price!</div>
+    </div>
+    <div class="mb-3 col-md-8">
+        <label for="country" class="form-label">Country</label>
+        <input type="text" name="listing[country]" placeholder="Pakistan" class="form-control" required>
+        <div class="invalid-feedback">country name should be valid!</div>
+    </div>
+</div>
+    <div class="mb-3">
+        <label for="location" class="form-label">Location</label>
+        <input type="text" name="listing[location]" placeholder="Raiwind, Lahore" class="form-control" required>
+        <div class="invalid-feedback">location should be valid!</div>
+    </div>
+    <br>   
+    <button class="btn btn-dark add-btn">Add</button>
+    <br>  <br>
+</form>
+</div>
+</div>
+
+
+
+<!-- i will work later on map functionality  -->
+ 
+<!-- map on create new listing page  -->
+    <!-- <div id="map">
+      <a href="https://www.maptiler.com">
+        <img src="https://api.maptiler.com/resources/logo.svg" alt="MapTiler logo">
+
+      </a>
+    </div>
+
+    <script>
+        const apiKey = "ZDleXk7mUcfiPDVjCPfO";
+      
+        // Initialize the map
+        const map = L.map("map").setView([0, 0], 2);
+      
+        // Add the MapTiler tile layer
+        L.tileLayer(`https://api.maptiler.com/maps/streets-v2/{z}/{x}/{y}.png?key=${apiKey}`, {
+          tileSize: 512,
+          zoomOffset: -1,
+          attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a>, ' +
+            '<a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>',
+          crossOrigin: true
+        }).addTo(map);
+      
+        // Add geocoding search control
+        const geocodingControl = L.control.maptilerGeocoding({
+          apiKey: apiKey,
+          placeholder: "Search",
+          collapsed: true
+        }).addTo(map);
+      
+        // Listen to the form submission
+        const form = document.querySelector("form");
+        form.addEventListener("submit", async (e) => {
+          e.preventDefault();
+      
+          // Get the location input from the form
+          const locationInput = form.querySelector('input[name="listing[location]"]').value;
+      
+          // Use the MapTiler Geocoding API to fetch coordinates
+          const geocodingUrl = `https://api.maptiler.com/geocoding/${encodeURIComponent(locationInput)}.json?key=${apiKey}`;
+          try {
+            const response = await fetch(geocodingUrl);
+            const data = await response.json();
+      
+            if (data && data.features && data.features.length > 0) {
+              const [longitude, latitude] = data.features[0].geometry.coordinates;
+      
+              // Set the map view to the location
+              map.setView([latitude, longitude], 13);
+      
+              // Add a marker for the location
+              L.marker([latitude, longitude])
+                .addTo(map)
+                .bindPopup(`<b>${locationInput}</b>`)
+                .openPopup();
+            } else {
+              alert("Location not found!");
+            }
+          } catch (error) {
+            console.error("Error fetching geocoding data:", error);
+            alert("Failed to fetch location details. Please try again.");
+          }
+        });
+      </script>
+      
+  -->

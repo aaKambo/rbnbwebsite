@@ -1,0 +1,115 @@
+<style>
+  #top-bar-icons {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .icons {
+    text-align: center;
+    margin-right: 2rem;
+    margin-top: 2rem;
+    color: rgba(0, 0, 0, 0.676);
+    cursor: pointer;
+  }
+
+  .icons:hover {
+    color: black;
+  }
+
+  .icons p {
+    font-size: 0.8rem;
+  }
+  #tax-info{
+    display: none;
+  }
+  .tax-toggle{
+border: 1px solid black;
+border-radius: 1rem;
+height: 3rem;
+padding: 1rem;
+margin-left: 3rem;
+display: flex;
+align-items: center;
+  }
+</style>
+
+<div id="top-bar-icons">
+  <div class="icons">
+    <div><i class="fa-solid fa-fire-flame-curved"></i></div>
+    <p>Trending</p>
+  </div>
+  <div class="icons">
+    <div><i class="fa-solid fa-bed"></i></div>
+    <p>Rooms</p>
+  </div>
+  <div class="icons">
+    <div><i class="fa-solid fa-city"></i></div>
+    <p>Iconic cities</p>
+  </div>
+  <div class="icons">
+    <div><i class="fa-solid fa-mountain-sun"></i></div>
+    <p>Mountains</p>
+  </div>
+  <div class="icons">
+    <div><i class="fa-brands fa-fort-awesome"></i></div>
+    <p>Castles</p>
+  </div>
+  <div class="icons">
+    <div><i class="fa-solid fa-water-ladder"></i></div>
+    <p>Amazing pools</p>
+  </div>
+  <div class="icons">
+    <div><i class="fa-solid fa-tents"></i></div>
+    <p>Camping</p>
+  </div>
+  <div class="icons">
+    <div><i class="fa-solid fa-tractor"></i></div>
+    <p>Farms</p>
+  </div>
+  <div class="icons">
+    <div><i class="fa-solid fa-snowflake"></i></div>
+    <p>Arctic</p>
+  </div>
+ 
+  
+  <!-- below tax toogle div is used to  apply toggle radio button implementation with bootstrape -->
+  <div class="tax-toggle">
+    <div class="form-check-reverse form-switch">
+      <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+      <label class="form-check-label" for="flexSwitchCheckDefault">Display total after taxes</label>
+    </div>
+  </div>
+  
+</div>
+
+<div class="row mt-4 row-cols-lg-3 row-cols-md-3 row-cols-sm-1">
+  <% for(let listing of allListings ){%>
+    <a href="/listings/<%=listing._id  %>" class="cards-text">
+      <div class="card  col  listing-card">
+        <!-- `listing.image.url` get's the image for the cloud storage process with teh file name and url -->
+        <img src="<%= listing.image.url %>" class="card-img-top  index-image" alt="Listing-image" style="height: 17rem">
+        <div class="card-img-overlay"></div>
+        <div class="card-body all-cards  index-card">
+          <p class="card-text ">
+            <b>
+              <%= listing.title %>
+            </b> <br />
+            &#8377; <%= listing.price.toLocaleString("en-PK") %> /night
+          <i id="tax-info"> &nbsp; &nbsp; +18% GST</i>
+          </p>
+        </div>
+      </div>
+    </a>
+    <% } %>
+</div>
+
+<!-- functionality for top right corner tax toggler   -->
+<script>
+let taxSwitch = document.getElementById("flexSwitchCheckDefault")
+let Gst= document.getElementById("tax-info")
+
+taxSwitch.addEventListener("click",()=>{
+  console.log(Gst)
+})
+</script>
