@@ -5,18 +5,7 @@ const Listing = require("../MODELS/LISTING.JS");
 
 const MONGO_URL ="mongodb://127.0.0.1:27017/wanderlust";
 
-// below some lines for deploying our project
-const router = createBrowserRouter([
 
-    {
-        path:"/",
-        element:Home(),
-    },
-    {
-        path:"/test",
-        element:Test(),
-    }
-]);
 
 main()
 .then((res)=>{
