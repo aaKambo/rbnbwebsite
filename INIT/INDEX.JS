@@ -18,11 +18,6 @@ const router = createBrowserRouter([
     }
 ]);
 
-   
-  
-
-
-
 main()
 .then((res)=>{
     console.log("connection successful");
